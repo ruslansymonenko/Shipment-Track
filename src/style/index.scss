@@ -1,0 +1,17 @@
+@import "./reset";
+@import "./fonts";
+@import "./variables";
+@import "./themes/normal";
+@import "./themes/dark";
+
+.body {
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.app {
+  background: var(--bg-color);
+  min-height: 100svh;
+}
+
