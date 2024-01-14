@@ -1,0 +1,31 @@
+.circle-btn {
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: 'open-sans-semibold';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+
+  &__content {
+    min-height: 100%;
+    min-width: 100%;
+    text-align: center;
+  }
+}
+
+.circle-btn.default {
+  background: #fafffc;
+}
+
+.circle-btn.primary {
+  background: var(--primary-color);
+  color: var(--font-color-light);
+}
+
+.circle-btn.secondary {
+  background: var(--secondary-color);
+}

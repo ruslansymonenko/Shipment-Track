@@ -1,0 +1,11 @@
+.input {
+  height: 30px;
+  min-width: 100px;
+  padding: 3px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+
+  &:focus {
+    outline: none;
+  }
+}

@@ -1,0 +1,25 @@
+.button {
+  height: 30px;
+  min-width: 100px;
+  padding: 3px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'open-sans-semibold';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+}
+
+.button.default {
+  background: #fafffc;
+}
+
+.button.primary {
+  background: var(--primary-color);
+  color: var(--font-color-light);
+}
+
+.button.secondary {
+  background: var(--secondary-color);
+}
