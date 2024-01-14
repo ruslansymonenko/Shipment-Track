@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Button} from './components/Button';
 
 import {addClassNames} from './utils/addClassNames';
-import {Theme, useTheme} from './providers/ThemeProvider';
+import {ThemeContext} from './providers/ThemeProvider/ui/ThemeProvider';
 
 function App() {
-	const {theme} = useTheme() ?? {theme: Theme.NORMAL};
+	const {theme, toggleTheme} = useContext(ThemeContext);
 
 	return (
 		<div className={addClassNames('app', {}, [theme])}>
 			<h1>Hello</h1>
+			<button onClick={toggleTheme}>Theme</button>
 			<Button/>
 		</div>
 	);
