@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoutes } from '../../../router/routesConfig';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../store';
+
+import { hideSidebar, showSidebar } from '../../../store/slices/appSlices/sidebarSlice';
 
 import { Button, ButtonTypes } from '../../../components/Button';
 import { Input } from '../../../components/Input';
@@ -10,8 +14,32 @@ import './Nabvar.scss';
 
 import listImg from '../../../assets/icons/burger-menu.svg';
 import searchImg from '../../../assets/icons/search.svg';
+import { Switcher } from '../../../components/Switcher';
+import { ThemeContext } from '../../../providers/ThemeProvider/ui/ThemeProvider';
 
 const Navbar: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const isSidebarActive = useSelector((state: RootState) => state.sidebar.isActive);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const [switcherStatus, setSwitcherStatus] = useState(false);
+
+  const handleNavbarVisibility = () => {
+    console.log('text');
+    isSidebarActive ? dispatch(hideSidebar()) : dispatch(showSidebar());
+  };
+
+  const handleAppTheme = () => {
+    toggleTheme();
+  };
+
+  useEffect(() => {
+    if (theme === 'normal') {
+      setSwitcherStatus(false);
+    } else {
+      setSwitcherStatus(true);
+    }
+  }, [theme]);
+
   return (
     <nav className="navbar">
       <h1 className="navbar-title">
@@ -47,6 +75,12 @@ const Navbar: React.FC = () => {
               alt={'menu'}
             />
           }
+          addClasses={['navbar-circle-btn']}
+          onClick={handleNavbarVisibility}
+        />
+        <Switcher
+          action={handleAppTheme}
+          isChecked={switcherStatus}
         />
       </div>
     </nav>

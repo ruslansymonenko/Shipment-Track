@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import { addClassNames } from '../../../utils/addClassNames/addClassNames';
 
 import './Button.scss';
@@ -9,17 +9,14 @@ export enum ButtonTypes {
   SECONDARY = 'secondary',
 }
 
-interface I_ButtonProps {
+interface I_ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   buttonType: ButtonTypes;
   btnChildren: string | ReactNode;
   addClasses?: string[];
 }
 
-export const Button: FC<I_ButtonProps> = ({
-  buttonType = ButtonTypes.DEFAULT,
-  btnChildren,
-  addClasses,
-}) => {
+export const Button: FC<I_ButtonProps> = props => {
+  const { buttonType = ButtonTypes.DEFAULT, btnChildren, addClasses, ...otherProps } = props;
   let additionalClasses = '';
 
   if (addClasses) {
@@ -27,8 +24,11 @@ export const Button: FC<I_ButtonProps> = ({
   }
 
   return (
-    <div className={addClassNames('button', {}, [buttonType, additionalClasses])}>
+    <button
+      className={addClassNames('button', {}, [buttonType, additionalClasses])}
+      {...otherProps}
+    >
       <div className="button-content">{btnChildren}</div>
-    </div>
+    </button>
   );
 };

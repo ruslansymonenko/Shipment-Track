@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 import { addClassNames } from '../../../utils/addClassNames/addClassNames';
 
 import './CircleButton.scss';
+import { ButtonTypes } from '../../Button';
 
 export enum CircleButtonTypes {
   DEFAULT = 'default',
@@ -9,13 +10,14 @@ export enum CircleButtonTypes {
   SECONDARY = 'secondary',
 }
 
-interface I_CircleButtonProps {
+interface I_CircleButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   buttonType: CircleButtonTypes;
   btnChildren: string | ReactNode;
   addClasses?: string[];
 }
 
-const CircleButton: React.FC<I_CircleButtonProps> = ({ buttonType, btnChildren, addClasses }) => {
+const CircleButton: React.FC<I_CircleButtonProps> = props => {
+  const { buttonType = ButtonTypes.DEFAULT, btnChildren, addClasses, ...otherProps } = props;
   let additionalClasses = '';
 
   if (addClasses) {
@@ -23,7 +25,10 @@ const CircleButton: React.FC<I_CircleButtonProps> = ({ buttonType, btnChildren, 
   }
 
   return (
-    <button className={addClassNames('circle-btn', {}, [buttonType, additionalClasses])}>
+    <button
+      className={addClassNames('circle-btn', {}, [buttonType, additionalClasses])}
+      {...otherProps}
+    >
       <div className="circle-btn__content">{btnChildren}</div>
     </button>
   );

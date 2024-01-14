@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import AppRouter from './router/AppRouter';
 import { addClassNames } from './utils/addClassNames/addClassNames';
 import { ThemeContext } from './providers/ThemeProvider/ui/ThemeProvider';
 
 function App() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div className={addClassNames('app', {}, [theme])}>

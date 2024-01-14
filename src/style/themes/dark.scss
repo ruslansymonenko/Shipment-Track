@@ -1,6 +1,12 @@
 .app.dark {
-  --bg-color: #E3F3F0;
+  --bg-color: #2F4858;
 
   --primary-color: #28AE96;
   --secondary-color: #FBC01B;
+
+  --font-color: white;
+
+  --shadow: 1px 2px 8px -4px black;
+
+  transition: all .3s;
 }

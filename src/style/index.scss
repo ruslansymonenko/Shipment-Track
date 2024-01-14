@@ -11,9 +11,24 @@
 }
 
 .app {
+  position: relative;
   background: var(--bg-color);
-  color: var(--font-color-dark);
+  color: var(--font-color);
   min-height: 100svh;
   font: var(--font-s);
+}
+
+.page-content {
+  position: relative;
+  min-height: 100svh;
+}
+
+.content {
+  display: flex;
+  min-height: calc(100svh - var(--navbar-height));
+}
+
+.main {
+  width: 100%;
 }
 
