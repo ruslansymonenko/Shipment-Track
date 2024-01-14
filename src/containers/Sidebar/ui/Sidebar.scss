@@ -1,9 +1,20 @@
 .sidebar {
-  height: calc(100vh - var(--navbar-height));
+  height: calc(100vh - (var(--navbar-height) + 40px));
   width: var(--sidebar-width);
   background: var(--inverted-bg-color);
   position: relative;
   transition: width 0.3s ease;
+  background: var(--sidebar-color);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-img {
+    height: 50px;
+  }
 }
 
 .collapsed {
