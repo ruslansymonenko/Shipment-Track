@@ -1,16 +1,25 @@
 import React, {Suspense} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import {routerConfig} from './routerConfig';
+import {routesConfig} from './routesConfig';
+import {RequireAuth} from './RequireAuth';
 
 const AppRouter = () => {
 	return (
 		<Suspense fallback={'Loading...'}>
 			<Routes>
-				{Object.values(routerConfig).map((routeData) => {
+				{Object.values(routesConfig).map((routeData) => {
 					const AppPage = routeData.component;
 
 					return (
-						<Route key={routeData.path} path={routeData.path} element={<AppPage/>}/>
+						<Route key={routeData.path} path={routeData.path} element={
+							routeData.private ? (
+								<RequireAuth>
+									<AppPage />
+								</RequireAuth>
+							) : (
+								<AppPage />
+							)
+						}/>
 					);
 				})}
 			</Routes>

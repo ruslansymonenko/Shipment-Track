@@ -5,7 +5,7 @@ import AppRouter from './router/AppRouter';
 import {addClassNames} from './utils/addClassNames/addClassNames';
 import {ThemeContext} from './providers/ThemeProvider/ui/ThemeProvider';
 
-import {AppRoutes} from './router/routerConfig';
+import {AppRoutes} from './router/routesConfig';
 
 function App() {
 	const {theme, toggleTheme} = useContext(ThemeContext);
