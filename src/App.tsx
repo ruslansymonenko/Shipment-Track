@@ -1,17 +1,24 @@
 import React, {useContext} from 'react';
-import {Button} from './components/Button';
+import {Link} from 'react-router-dom';
 
-import {addClassNames} from './utils/addClassNames';
+import AppRouter from './router/AppRouter';
+import {addClassNames} from './utils/addClassNames/addClassNames';
 import {ThemeContext} from './providers/ThemeProvider/ui/ThemeProvider';
+
+import {AppRoutes} from './router/routerConfig';
 
 function App() {
 	const {theme, toggleTheme} = useContext(ThemeContext);
 
 	return (
 		<div className={addClassNames('app', {}, [theme])}>
-			<h1>Hello</h1>
-			<button onClick={toggleTheme}>Theme</button>
-			<Button/>
+			<nav>
+				<Link to={AppRoutes.MAIN}>Main Page</Link>
+				<Link to={AppRoutes.CARGO}>Cargo Page</Link>
+			</nav>
+			<div className="page-content">
+				<AppRouter/>
+			</div>
 		</div>
 	);
 }
