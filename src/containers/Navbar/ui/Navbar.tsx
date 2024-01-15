@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AppRoutes } from '../../../router/routesConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store';
+import { useTranslation } from 'react-i18next';
 
 import { hideSidebar, showSidebar } from '../../../store/slices/appSlices/sidebarSlice';
 
@@ -17,9 +18,15 @@ import searchImg from '../../../assets/icons/search.svg';
 import { Switcher } from '../../../components/Switcher';
 import { ThemeContext } from '../../../providers/ThemeProvider/ui/ThemeProvider';
 
+enum Languages {
+  UA = 'ua',
+  EN = 'en',
+}
+
 const Navbar: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const isSidebarActive = useSelector((state: RootState) => state.sidebar.isActive);
+  const { t, i18n } = useTranslation();
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [switcherStatus, setSwitcherStatus] = useState(false);
 
@@ -30,6 +37,10 @@ const Navbar: React.FC = () => {
 
   const handleAppTheme = () => {
     toggleTheme();
+  };
+
+  const switchLanguage = (lang: Languages) => {
+    i18n.changeLanguage(lang);
   };
 
   useEffect(() => {
@@ -53,7 +64,7 @@ const Navbar: React.FC = () => {
       <div className="navbar-controllers">
         <Button
           buttonType={ButtonTypes.PRIMARY}
-          btnChildren={'Add +'}
+          btnChildren={t('Add +')}
           addClasses={['navbar-button']}
         />
         <Input addClasses={['navbar-input']} />
@@ -81,6 +92,19 @@ const Navbar: React.FC = () => {
         <Switcher
           action={handleAppTheme}
           isChecked={switcherStatus}
+          addClasses={['navbar-switcher']}
+        />
+        <CircleButton
+          buttonType={CircleButtonTypes.PRIMARY}
+          btnChildren={'en'}
+          addClasses={['navbar-circle-btn']}
+          onClick={() => switchLanguage(Languages.EN)}
+        />
+        <CircleButton
+          buttonType={CircleButtonTypes.PRIMARY}
+          btnChildren={'ua'}
+          addClasses={['navbar-circle-btn']}
+          onClick={() => switchLanguage(Languages.UA)}
         />
       </div>
     </nav>
