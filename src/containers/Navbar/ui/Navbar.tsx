@@ -29,6 +29,7 @@ const Navbar: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [switcherStatus, setSwitcherStatus] = useState(false);
+  const [activeLangBtn, setActiveLangBtn] = useState<Languages | ''>('');
 
   const handleNavbarVisibility = () => {
     console.log('text');
@@ -41,6 +42,7 @@ const Navbar: React.FC = () => {
 
   const switchLanguage = (lang: Languages) => {
     i18n.changeLanguage(lang);
+    setActiveLangBtn(lang);
   };
 
   useEffect(() => {
@@ -50,6 +52,13 @@ const Navbar: React.FC = () => {
       setSwitcherStatus(true);
     }
   }, [theme]);
+
+  useEffect(() => {
+    if (localStorage.getItem('i18nextLng')) {
+      const savedLanguage = localStorage.getItem('i18nextLng') as Languages;
+      setActiveLangBtn(savedLanguage);
+    }
+  }, []);
 
   return (
     <nav className="navbar">
@@ -95,13 +104,17 @@ const Navbar: React.FC = () => {
           addClasses={['navbar-switcher']}
         />
         <CircleButton
-          buttonType={CircleButtonTypes.PRIMARY}
+          buttonType={
+            activeLangBtn === 'en' ? CircleButtonTypes.SECONDARY : CircleButtonTypes.PRIMARY
+          }
           btnChildren={'en'}
           addClasses={['navbar-circle-btn']}
           onClick={() => switchLanguage(Languages.EN)}
         />
         <CircleButton
-          buttonType={CircleButtonTypes.PRIMARY}
+          buttonType={
+            activeLangBtn === 'ua' ? CircleButtonTypes.SECONDARY : CircleButtonTypes.PRIMARY
+          }
           btnChildren={'ua'}
           addClasses={['navbar-circle-btn']}
           onClick={() => switchLanguage(Languages.UA)}
