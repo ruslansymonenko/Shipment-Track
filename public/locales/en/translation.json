@@ -1,4 +1,9 @@
 {
   "hello": "hello",
-  "Add +": "Add +"
+  "Add +": "Add +",
+  "Sender": "Sender",
+  "Status": "Status",
+  "Expected": "Expected",
+  "Created": "Created",
+  "Order": "Order"
 }

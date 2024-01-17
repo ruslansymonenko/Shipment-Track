@@ -1,0 +1,50 @@
+.shipments-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    width: 100%;
+    min-height: 100px;
+    margin-top: 20px;
+  }
+
+  &__header {
+    display: flex;
+  }
+
+  &__header-item {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    font-family: 'open-sans-semibold';
+  }
+
+  &__item {
+    display: flex;
+    height: 60px;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    background: var(--shipments-list-item-color);
+    position: relative;
+    width: 100%;
+    margin: 5px 0px;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  &__item-column {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+  }
+}
+

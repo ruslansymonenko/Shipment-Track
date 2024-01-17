@@ -32,7 +32,6 @@ const Navbar: React.FC = () => {
   const [activeLangBtn, setActiveLangBtn] = useState<Languages | ''>('');
 
   const handleNavbarVisibility = () => {
-    console.log('text');
     isSidebarActive ? dispatch(hideSidebar()) : dispatch(showSidebar());
   };
 
@@ -62,63 +61,67 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar">
-      <h1 className="navbar-title">
-        <Link
-          className="navbar-link"
-          to={AppRoutes.MAIN}
-        >
-          Shipment Track
-        </Link>
-      </h1>
-      <div className="navbar-controllers">
-        <Button
-          buttonType={ButtonTypes.PRIMARY}
-          btnChildren={t('Add +')}
-          addClasses={['navbar-button']}
-        />
-        <Input addClasses={['navbar-input']} />
-        <CircleButton
-          buttonType={CircleButtonTypes.SECONDARY}
-          btnChildren={
-            <img
-              src={searchImg}
-              alt={'menu'}
+      <div className="container">
+        <div className="navbar-content">
+          <h1 className="navbar-title">
+            <Link
+              className="navbar-link"
+              to={AppRoutes.MAIN}
+            >
+              Shipment Track
+            </Link>
+          </h1>
+          <div className="navbar-controllers">
+            <Button
+              buttonType={ButtonTypes.PRIMARY}
+              btnChildren={t('Add +')}
+              addClasses={['navbar-button']}
             />
-          }
-          addClasses={['navbar-circle-btn']}
-        />
-        <CircleButton
-          buttonType={CircleButtonTypes.SECONDARY}
-          btnChildren={
-            <img
-              src={listImg}
-              alt={'menu'}
+            <Input addClasses={['navbar-input']} />
+            <CircleButton
+              buttonType={CircleButtonTypes.SECONDARY}
+              btnChildren={
+                <img
+                  src={searchImg}
+                  alt={'menu'}
+                />
+              }
+              addClasses={['navbar-circle-btn']}
             />
-          }
-          addClasses={['navbar-circle-btn']}
-          onClick={handleNavbarVisibility}
-        />
-        <Switcher
-          action={handleAppTheme}
-          isChecked={switcherStatus}
-          addClasses={['navbar-switcher']}
-        />
-        <CircleButton
-          buttonType={
-            activeLangBtn === 'en' ? CircleButtonTypes.SECONDARY : CircleButtonTypes.PRIMARY
-          }
-          btnChildren={'en'}
-          addClasses={['navbar-circle-btn']}
-          onClick={() => switchLanguage(Languages.EN)}
-        />
-        <CircleButton
-          buttonType={
-            activeLangBtn === 'ua' ? CircleButtonTypes.SECONDARY : CircleButtonTypes.PRIMARY
-          }
-          btnChildren={'ua'}
-          addClasses={['navbar-circle-btn']}
-          onClick={() => switchLanguage(Languages.UA)}
-        />
+            <CircleButton
+              buttonType={isSidebarActive ? CircleButtonTypes.PRIMARY : CircleButtonTypes.SECONDARY}
+              btnChildren={
+                <img
+                  src={listImg}
+                  alt={'menu'}
+                />
+              }
+              addClasses={['navbar-circle-btn']}
+              onClick={handleNavbarVisibility}
+            />
+            <Switcher
+              action={handleAppTheme}
+              isChecked={switcherStatus}
+              addClasses={['navbar-switcher']}
+            />
+            <CircleButton
+              buttonType={
+                activeLangBtn === 'en' ? CircleButtonTypes.PRIMARY : CircleButtonTypes.SECONDARY
+              }
+              btnChildren={'en'}
+              addClasses={['navbar-circle-btn']}
+              onClick={() => switchLanguage(Languages.EN)}
+            />
+            <CircleButton
+              buttonType={
+                activeLangBtn === 'ua' ? CircleButtonTypes.PRIMARY : CircleButtonTypes.SECONDARY
+              }
+              btnChildren={'ua'}
+              addClasses={['navbar-circle-btn']}
+              onClick={() => switchLanguage(Languages.UA)}
+            />
+          </div>
+        </div>
       </div>
     </nav>
   );

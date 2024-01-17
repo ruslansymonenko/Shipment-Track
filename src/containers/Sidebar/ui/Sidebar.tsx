@@ -24,7 +24,7 @@ const Sidebar: React.FC = () => {
   }, [theme]);
 
   return (
-    <div className={addClassNames('sidebar', { collapsed: isActive })}>
+    <div className={addClassNames('sidebar', { collapsed: !isActive })}>
       <img
         className="sidebar-img"
         src={sidebarImg}

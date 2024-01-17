@@ -3,7 +3,6 @@
   width: var(--sidebar-width);
   background: var(--inverted-bg-color);
   position: relative;
-  transition: width 0.3s ease;
   background: var(--sidebar-color);
   padding: 10px;
   border-radius: 10px;
@@ -11,6 +10,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 10px;
+  transition: width 0.3s ease;
 
   &-img {
     height: 50px;

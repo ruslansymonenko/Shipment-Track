@@ -3,7 +3,15 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+
+
+  &-content {
+    min-width: 100%;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &-title {
     font-size: var(--font-size-h);
