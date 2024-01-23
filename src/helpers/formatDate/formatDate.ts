@@ -1,4 +1,10 @@
 export const formatDate = (date: string): string => {
+  const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/;
+  if (!dateRegex.test(date)) {
+    console.log('Invalid date format. Expected format: "yyyy-mm-ddThh:mm:ss');
+    return '../../..';
+  }
+
   const inputDateTime = new Date(date);
 
   if (isNaN(inputDateTime.getTime())) {

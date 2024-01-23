@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { I_Shipment } from '../../../types/shipments';
-import { formatDate } from '../../../helpers/formatDate';
+import { formatDate } from '../../../helpers/formatDate/formatDate';
 
 interface I_ShipmentsListItemProps {
   shipment: I_Shipment;
