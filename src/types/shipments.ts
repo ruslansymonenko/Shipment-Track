@@ -8,10 +8,10 @@ export enum ShipmentStatuses {
 
 export enum Carriers {
   CARRIER_1 = 'Carrier_1',
-  CARRIER_2 = 'Carrier_1',
-  CARRIER_3 = 'Carrier_1',
-  CARRIER_4 = 'Carrier_1',
-  CARRIER_5 = 'Carrier_1',
+  CARRIER_2 = 'Carrier_2',
+  CARRIER_3 = 'Carrier_3',
+  CARRIER_4 = 'Carrier_4',
+  CARRIER_5 = 'Carrier_5',
 }
 
 export interface I_Shipment {

@@ -1,18 +1,18 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../store';
 import { showSidebar } from '../../../store/slices/appSlices/sidebarSlice';
 
 import { ShipmentsListItem } from '../../../components/ShipmentsListItem';
 
 import './ShipmentsList.scss';
 
-import { shipmentsTestData } from '../../../testdata/testShipments';
-
 const ShipmentsList: React.FC = () => {
   const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
+  const shipmentsData = useSelector((state: RootState) => state.shipments.shipments);
+
   const handleAdditionalShipmentInfo = () => {
     dispatch(showSidebar());
   };
@@ -27,13 +27,19 @@ const ShipmentsList: React.FC = () => {
         <div className="shipments-list__header-item">{t('Created')}</div>
       </div>
       <ul className="shipments-list">
-        {shipmentsTestData.map(shipment => (
-          <ShipmentsListItem
-            key={shipment.order}
-            shipment={shipment}
-            showInfoFunc={handleAdditionalShipmentInfo}
-          />
-        ))}
+        {shipmentsData ? (
+          shipmentsData.map(shipment => (
+            <ShipmentsListItem
+              key={shipment.order}
+              shipment={shipment}
+              showInfoFunc={handleAdditionalShipmentInfo}
+            />
+          ))
+        ) : (
+          <li className="shipments-list__item shipments-list__item--empty">
+            {t('There are no current deliveries')}
+          </li>
+        )}
       </ul>
     </div>
   );

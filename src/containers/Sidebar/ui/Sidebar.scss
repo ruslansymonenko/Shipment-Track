@@ -16,8 +16,31 @@
   &-img {
     height: 50px;
   }
+
+  &-close {
+    position: absolute;
+    right: 5%;
+    top: 2%;
+    height: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  &-close--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &-close__img {
+    height: 100%;
+    pointer-events: none;
+  }
+
+
+  &-collapsed {
+    width: var(--sidebar-width-collapsed);
+  }
 }
 
-.collapsed {
-  width: var(--sidebar-width-collapsed);
-}

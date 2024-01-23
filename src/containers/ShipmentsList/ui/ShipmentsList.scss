@@ -39,12 +39,53 @@
     }
   }
 
+  &__item--empty {
+    align-items: center;
+    justify-content: center;
+  }
+
   &__item-column {
     display: flex;
     position: relative;
     align-items: center;
     justify-content: center;
     width: 20%;
+  }
+
+  &__item-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__status-color {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    background-color: gray;
+  }
+
+  &__status-color--new {
+    background-color: var(--status-new);
+  }
+
+  &__status-color--inprogress {
+    background-color: var(--status-inProgress);
+  }
+
+  &__status-color--intransit {
+    background-color: var(--status-inTransit);
+  }
+
+  &__status-color--atwarehouse {
+    background-color: var(--status-atWarehouse);
+  }
+
+  &__status-color--delivered {
+    background-color: var(--status-delivered);
   }
 }
 
