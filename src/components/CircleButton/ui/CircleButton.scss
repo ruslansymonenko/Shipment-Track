@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow);
+  transition: .4s ease;
 
   &__content {
     min-height: 100%;

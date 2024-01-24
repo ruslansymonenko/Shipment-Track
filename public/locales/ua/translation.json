@@ -6,5 +6,10 @@
   "Expected": "Оічкується",
   "Created": "Створено",
   "Order": "Замовлення",
-  "There are no current deliveries": "Актуальних доставок немає"
+  "There are no current deliveries": "Актуальних доставок немає",
+  "New": "Нова",
+  "In Progress": "В роботі",
+  "In Transit": "В дорозі",
+  "At Warehouse": "На складі",
+  "Delivered": "Доставлено"
 }

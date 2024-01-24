@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { I_Shipment, ShipmentStatuses } from '../../../types/shipments';
 import { formatDate } from '../../../helpers/formatDate/formatDate';
 import { addClassNames } from '../../../utils/addClassNames/addClassNames';
+import { useTranslation } from 'react-i18next';
 
 interface I_ShipmentsListItemProps {
   shipment: I_Shipment;
@@ -13,6 +14,7 @@ const ShipmentsListItem: React.FC<I_ShipmentsListItemProps> = ({ shipment, showI
   const [statusColor, setStatusColor] = useState('');
   const [expectedDate, setExpectedDate] = useState('');
   const [createdDate, setCreatedDate] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     setExpectedDate(formatDate(expected_at));
@@ -50,7 +52,7 @@ const ShipmentsListItem: React.FC<I_ShipmentsListItemProps> = ({ shipment, showI
       <div className="shipments-list__item-column">{order}</div>
       <div className="shipments-list__item-column">
         <div className="shipments-list__item-status">
-          <span className="shipments-list__status-text">{status}</span>
+          <span className="shipments-list__status-text">{t(status)}</span>
           <span className={addClassNames('shipments-list__status-color', {}, [statusColor])}></span>
         </div>
       </div>
