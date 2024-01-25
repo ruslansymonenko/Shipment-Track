@@ -12,7 +12,7 @@ interface I_AuthSlice {
 const initialState: I_AuthSlice = {
   user: null,
   userRole: null,
-  token: null,
+  token: 'token',
 };
 
 const authSlice = createSlice({
